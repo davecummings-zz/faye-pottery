@@ -32,4 +32,3 @@ h3 {
 a, button {
   @apply transition-colors duration-200;
 }
-// Cache bust
