@@ -12,7 +12,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link href={`/product/${product.id}`}>
       <div className="group cursor-pointer">
-        <div className="relative h-64 rounded-lg overflow-hidden shadow-md mb-4 bg-white">
+        <div className="relative h-72 rounded-lg overflow-hidden shadow-md mb-6 bg-white">
           <Image
             src={product.image}
             alt={product.name}

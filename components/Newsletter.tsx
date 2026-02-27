@@ -16,11 +16,11 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-clay text-white">
+    <section className="py-20 md:py-32 bg-clay text-white">
       <div className="max-w-2xl mx-auto px-4 text-center">
-        <h2 className="text-4xl font-serif font-bold mb-4">Stay Updated</h2>
-        <p className="text-lg mb-8 text-white/90">
-          Get news about new pottery releases, classes, and special offers.
+        <h2 className="text-5xl font-serif font-bold mb-6">Stay Updated</h2>
+        <p className="text-lg mb-10 text-white/90 font-light">
+          Get news about new pottery releases, classes, and special offers delivered to your inbox.
         </p>
         
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">

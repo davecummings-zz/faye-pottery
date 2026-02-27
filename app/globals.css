@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,9 +9,26 @@ html {
 }
 
 body {
-  @apply bg-sand text-earth;
+  @apply bg-cream text-earth font-sans;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-serif font-bold;
+  @apply font-serif font-bold text-earth;
+}
+
+h1 {
+  @apply text-4xl md:text-6xl;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl;
+}
+
+/* Smooth transitions */
+a, button {
+  @apply transition-colors duration-200;
 }

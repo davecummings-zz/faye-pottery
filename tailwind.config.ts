@@ -8,13 +8,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        clay: '#8b7355',
-        glaze: '#d4a574',
-        earth: '#3d2817',
-        sand: '#f5e6d3',
+        clay: '#9d7a6e',
+        glaze: '#c9a876',
+        earth: '#5a4a42',
+        sand: '#f9f6f1',
+        cream: '#fefdfb',
+        warm: '#dcc7b8',
       },
       fontFamily: {
-        serif: ['Georgia', 'serif'],
+        serif: ['"Crimson Text"', 'Georgia', 'serif'],
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+      },
+      spacing: {
+        '128': '32rem',
       },
     },
   },

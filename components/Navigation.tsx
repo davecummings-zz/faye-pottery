@@ -7,9 +7,9 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b-2 border-clay shadow-sm">
-      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-serif font-bold text-clay">
+    <nav className="sticky top-0 z-50 bg-cream border-b border-warm shadow-sm">
+      <div className="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
+        <Link href="/" className="text-2xl font-serif font-bold text-clay hover:text-glaze">
           Faye's Pottery
         </Link>
 

@@ -6,9 +6,12 @@ export default function FeaturedProducts() {
   const featured = getFeaturedProducts()
 
   return (
-    <section className="py-16 md:py-24 bg-sand">
+    <section className="py-20 md:py-32 bg-sand">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-serif font-bold text-clay text-center mb-12">Featured Pieces</h2>
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-serif font-bold text-clay mb-4">Featured Pieces</h2>
+          <p className="text-lg text-earth/70 font-light">Handmade ceramics, each one unique</p>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {featured.map(product => (
