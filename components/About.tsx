@@ -1,0 +1,33 @@
+import Image from 'next/image'
+
+export default function About() {
+  return (
+    <section className="py-16 md:py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-4xl font-serif font-bold text-clay mb-6">About Faye</h2>
+            <p className="text-lg text-earth mb-4 leading-relaxed">
+              I'm a ceramic artist dedicated to creating beautiful, functional pottery that brings joy to everyday moments. Each piece is hand-thrown and hand-finished with intention and care.
+            </p>
+            <p className="text-lg text-earth mb-4 leading-relaxed">
+              My work celebrates the natural beauty of clay—the organic forms, warm glazes, and tactile surfaces that make handmade ceramics special. Whether it's a morning coffee mug or a statement vase, I create pieces meant to be used and loved.
+            </p>
+            <p className="text-lg text-earth leading-relaxed">
+              Based in [Your Location], I work from my studio creating unique pottery while also teaching others the meditative art of ceramic work.
+            </p>
+          </div>
+          
+          <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
+            <Image
+              src="https://images.unsplash.com/photo-1578906450891-4b769bcce551?w=600&h=600&fit=crop"
+              alt="Faye working on pottery"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
