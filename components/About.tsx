@@ -20,7 +20,7 @@ export default function About() {
           
           <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
             <Image
-              src="https://picsum.photos/600/600?random=9"
+              src="https://images.unsplash.com/photo-1578906450891-4b769bcce551?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60"
               alt="Faye working on pottery"
               fill
               className="object-cover"
