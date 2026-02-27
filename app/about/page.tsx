@@ -28,7 +28,7 @@ export default function About() {
 
             <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="https://images.unsplash.com/photo-1579783902614-e3fb5141b0cb?w=600&h=600&fit=crop"
+                src="https://picsum.photos/600/600?random=10"
                 alt="Faye in her pottery studio"
                 fill
                 className="object-cover"
