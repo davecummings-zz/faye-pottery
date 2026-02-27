@@ -4,11 +4,12 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { getProduct } from '@/lib/products'
 import Link from 'next/link'
+import { loadStripe } from '@stripe/stripe-js'
 
 export default function ProductPage({ params }: { params: { id: string } }) {
   const product = getProduct(params.id)
   const [quantity, setQuantity] = useState(1)
-  const [addedToCart, setAddedToCart] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   if (!product) {
     return (
@@ -27,12 +28,51 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const totalPrice = ((product.price * quantity) / 100).toFixed(2)
 
   const handleAddToCart = async () => {
-    // TODO: Integrate with Stripe checkout
-    // This will redirect to Stripe Checkout with the product and quantity
-    console.log(`Added ${quantity} of ${product.name} to cart`)
-    console.log(`Total: $${totalPrice}`)
-    setAddedToCart(true)
-    setTimeout(() => setAddedToCart(false), 2000)
+    if (!product) return
+
+    setIsLoading(true)
+    try {
+      // Call our checkout API endpoint
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productId: product.id,
+          productName: product.name,
+          price: product.price,
+          quantity: quantity,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to create checkout session')
+      }
+
+      // Redirect to Stripe Checkout
+      const stripe = await loadStripe(
+        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+      )
+      if (!stripe) {
+        throw new Error('Stripe failed to load')
+      }
+
+      const result = await stripe.redirectToCheckout({
+        sessionId: data.sessionId,
+      })
+
+      if (result.error) {
+        throw new Error(result.error.message)
+      }
+    } catch (error) {
+      console.error('Checkout error:', error)
+      alert(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -120,9 +160,14 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                   <button
                     onClick={handleAddToCart}
-                    className="bg-clay text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-earth transition"
+                    disabled={isLoading}
+                    className={`px-8 py-4 rounded-lg font-bold text-lg transition ${
+                      isLoading
+                        ? 'bg-gray-400 text-white cursor-not-allowed'
+                        : 'bg-clay text-white hover:bg-earth'
+                    }`}
                   >
-                    {addedToCart ? '✓ Added to Cart' : `Add to Cart - $${totalPrice}`}
+                    {isLoading ? 'Processing...' : `Add to Cart - $${totalPrice}`}
                   </button>
 
                   <p className="text-sm text-earth/60">
