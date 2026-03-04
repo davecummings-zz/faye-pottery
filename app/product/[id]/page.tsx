@@ -54,7 +54,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
       // Redirect to Stripe Checkout
       const stripe = await loadStripe(
-        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
       )
       if (!stripe) {
         throw new Error('Stripe failed to load')
