@@ -1,7 +1,6 @@
 import Hero from '@/components/Hero'
 import About from '@/components/About'
 import FeaturedProducts from '@/components/FeaturedProducts'
-import Newsletter from '@/components/Newsletter'
 
 export default function Home() {
   return (
@@ -9,7 +8,6 @@ export default function Home() {
       <Hero />
       <About />
       <FeaturedProducts />
-      <Newsletter />
     </>
   )
 }
