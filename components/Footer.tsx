@@ -2,12 +2,12 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-earth text-sand border-t-4 border-glaze">
+    <footer className="bg-[#f6f6f6] text-[#333232] border-t-4 border-glaze">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="text-xl font-serif font-bold mb-4">Faye's Pottery</h3>
-            <p className="text-sm text-sand/80">
+            <p className="text-sm text-[#333232]/80">
               Handcrafted ceramics made with love and intention.
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-sand/20 pt-8 text-sm text-sand/60 text-center">
+        <div className="border-t border-[#333232]/20 pt-8 text-sm text-[#333232]/60 text-center">
           <p>&copy; 2024 Faye's Pottery. All rights reserved.</p>
         </div>
       </div>
