@@ -19,7 +19,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             fill
             className="object-cover group-hover:scale-105 transition duration-300"
           />
-          {product.stock === 0 && (
+          {product.quantity === 0 && (
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
               <span className="text-white font-bold text-lg">Out of Stock</span>
             </div>
@@ -38,8 +38,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           <span className="text-2xl font-bold text-glaze">
             ${formattedPrice}
           </span>
-          <span className={`text-sm font-semibold ${product.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
-            {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+          <span className={`text-sm font-semibold ${product.quantity > 0 ? 'text-green-600' : 'text-red-600'}`}>
+            {product.quantity > 0 ? `${product.quantity} in stock` : 'Out of stock'}
           </span>
         </div>
       </div>
