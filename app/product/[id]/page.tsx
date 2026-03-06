@@ -130,12 +130,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               </div>
 
               {/* Stock Status */}
-              <p className={`text-sm font-semibold mb-6 ${product.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
-                {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+              <p className={`text-sm font-semibold mb-6 ${product.quantity > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                {product.quantity > 0 
+                  ? `${product.quantity} ${product.bundleSize ? `sets of ${product.bundleSize}` : 'in stock'}`
+                  : 'Out of stock'
+                }
               </p>
 
               {/* Quantity and Add to Cart */}
-              {product.stock > 0 && (
+              {product.quantity > 0 && (
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-4">
                     <label className="font-bold text-clay">Quantity:</label>
@@ -176,7 +179,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 </div>
               )}
 
-              {product.stock === 0 && (
+              {product.quantity === 0 && (
                 <button
                   disabled
                   className="bg-gray-400 text-white px-8 py-4 rounded-lg font-bold text-lg cursor-not-allowed"
