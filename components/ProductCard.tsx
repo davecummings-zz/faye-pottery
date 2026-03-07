@@ -12,7 +12,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link href={`/product/${product.id}`}>
       <div className="group cursor-pointer">
-        <div className="relative h-72 rounded-lg overflow-hidden shadow-md mb-6 bg-white">
+        <div className="relative h-72 overflow-hidden shadow-md mb-6 bg-white">
           <Image
             src={product.image}
             alt={product.name}
@@ -26,19 +26,19 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
         
-        <h3 className="text-xl font-serif font-bold text-clay mb-2 group-hover:text-glaze transition">
+        <h3 className="text-xl font-bold text-[#3A3A3A] mb-2 group-hover:text-[#3A3A3A] transition">
           {product.name}
         </h3>
         
-        <p className="text-earth text-sm mb-3 line-clamp-2">
+        <p className="text-[#3A3A3A] text-sm mb-3 line-clamp-2">
           {product.description}
         </p>
         
         <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-glaze">
+          <span className="text-xl font-bold text-glaze">
             ${formattedPrice}
           </span>
-          <span className={`text-sm font-semibold ${product.quantity > 0 ? 'text-green-600' : 'text-red-600'}`}>
+          <span className={`text-sm font-semibold ${product.quantity > 0 ? 'text-[#3A3A3A]' : 'text-[#3A3A3A]'}`}>
             {product.quantity > 0 ? `${product.quantity} in stock` : 'Out of stock'}
           </span>
         </div>

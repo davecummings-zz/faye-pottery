@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="text-xl font-serif font-bold mb-4">Faye's Pottery</h3>
+            <h3 className="text-xl font-bold mb-4">Faye's Pottery</h3>
             <p className="text-sm text-[#333232]/80">
               Handcrafted ceramics made with love and intention.
             </p>
@@ -16,22 +16,22 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Shop</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/shop" className="hover:text-glaze transition">
+                <Link href="/shop" className="hover:text-[#3A3A3A] transition">
                   All Products
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=bowls" className="hover:text-glaze transition">
+                <Link href="/shop?category=bowls" className="hover:text-[#3A3A3A] transition">
                   Bowls
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=mugs" className="hover:text-glaze transition">
+                <Link href="/shop?category=mugs" className="hover:text-[#3A3A3A] transition">
                   Mugs
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=vases" className="hover:text-glaze transition">
+                <Link href="/shop?category=vases" className="hover:text-[#3A3A3A] transition">
                   Vases
                 </Link>
               </li>
@@ -42,17 +42,17 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Company</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/about" className="hover:text-glaze transition">
+                <Link href="/about" className="hover:text-[#3A3A3A] transition">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-glaze transition">
+                <Link href="/contact" className="hover:text-[#3A3A3A] transition">
                   Contact
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-glaze transition">
+                <a href="#" className="hover:text-[#3A3A3A] transition">
                   Instagram
                 </a>
               </li>
@@ -63,17 +63,17 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Customer Care</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-glaze transition">
+                <a href="#" className="hover:text-[#3A3A3A] transition">
                   Shipping Info
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-glaze transition">
+                <a href="#" className="hover:text-[#3A3A3A] transition">
                   Returns
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-glaze transition">
+                <a href="#" className="hover:text-[#3A3A3A] transition">
                   Privacy Policy
                 </a>
               </li>

@@ -18,8 +18,8 @@ export default function Newsletter() {
   return (
     <section className="py-20 md:py-32 bg-clay text-white">
       <div className="max-w-2xl mx-auto px-4 text-center">
-        <h2 className="text-5xl font-serif font-bold mb-6">Stay Updated</h2>
-        <p className="text-lg mb-10 text-white/90 font-light">
+        <h2 className="text-5xl font-bold mb-6">Stay Updated</h2>
+        <p className="text-lg mb-10 text-[rgba(58,58,58,0.9)] font-light">
           Get news about new pottery releases, classes, and special offers delivered to your inbox.
         </p>
         
@@ -30,18 +30,18 @@ export default function Newsletter() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             required
-            className="flex-grow px-4 py-3 rounded-lg text-earth focus:outline-none focus:ring-2 focus:ring-glaze"
+            className="flex-grow px-4 py-3 text-[#3A3A3A] focus:outline-none focus:ring-2 focus:ring-glaze"
           />
           <button
             type="submit"
-            className="px-8 py-3 bg-glaze text-earth font-semibold rounded-lg hover:bg-sand transition"
+            className="px-8 py-3 bg-white text-[#3A3A3A] font-semibold hover:bg-white transition"
           >
             Subscribe
           </button>
         </form>
 
         {submitted && (
-          <p className="mt-4 text-glaze font-semibold">
+          <p className="mt-4 text-[#3A3A3A] font-semibold">
             ✓ Thanks for subscribing!
           </p>
         )}

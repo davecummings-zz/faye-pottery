@@ -8,16 +8,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        clay: '#9d7a6e',
+        clay: '#3A3A3A',
         glaze: '#b6bfb2',
         earth: '#5a4a42',
-        sand: '#f9f6f1',
+        sand: '#ffffff',
         cream: '#fefdfb',
         warm: '#dcc7b8',
       },
       fontFamily: {
-        serif: ['"Crimson Text"', 'Georgia', 'serif'],
-        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+        serif: ['Helvetica', 'Arial', 'sans-serif'],
+        sans: ['Helvetica', 'Arial', 'sans-serif'],
       },
       spacing: {
         '128': '32rem',

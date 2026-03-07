@@ -7,31 +7,31 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="sticky top-0 z-50 bg-cream border-b border-warm shadow-sm">
+    <nav className="sticky top-0 z-50 bg-[#f6f6f6] shadow-md">
       <div className="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-serif font-bold text-clay hover:text-glaze">
-          Faye's Pottery
+        <Link href="/" className="text-2xl font-bold text-[#3A3A3A] hover:text-[#3A3A3A]">
+          Faye Nicole Pottery
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8 items-center">
-          <Link href="/" className="text-earth hover:text-clay transition">
+          <Link href="/" className="text-[#3A3A3A] hover:text-[#3A3A3A] transition">
             Home
           </Link>
-          <Link href="/shop" className="text-earth hover:text-clay transition">
+          <Link href="/shop" className="text-[#3A3A3A] hover:text-[#3A3A3A] transition">
             Shop
           </Link>
-          <Link href="/about" className="text-earth hover:text-clay transition">
+          <Link href="/about" className="text-[#3A3A3A] hover:text-[#3A3A3A] transition">
             About
           </Link>
-          <Link href="/contact" className="text-earth hover:text-clay transition">
+          <Link href="/contact" className="text-[#3A3A3A] hover:text-[#3A3A3A] transition">
             Contact
           </Link>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-earth"
+          className="md:hidden p-2 text-[#3A3A3A]"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,18 +42,18 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-sand border-t border-clay">
+        <div className="md:hidden bg-white border-t border-clay">
           <div className="flex flex-col gap-4 p-4">
-            <Link href="/" className="text-earth hover:text-clay transition">
+            <Link href="/" className="text-[#3A3A3A] hover:text-[#3A3A3A] transition">
               Home
             </Link>
-            <Link href="/shop" className="text-earth hover:text-clay transition">
+            <Link href="/shop" className="text-[#3A3A3A] hover:text-[#3A3A3A] transition">
               Shop
             </Link>
-            <Link href="/about" className="text-earth hover:text-clay transition">
+            <Link href="/about" className="text-[#3A3A3A] hover:text-[#3A3A3A] transition">
               About
             </Link>
-            <Link href="/contact" className="text-earth hover:text-clay transition">
+            <Link href="/contact" className="text-[#3A3A3A] hover:text-[#3A3A3A] transition">
               Contact
             </Link>
           </div>

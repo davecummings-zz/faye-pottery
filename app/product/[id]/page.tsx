@@ -15,8 +15,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-serif font-bold text-clay mb-4">Product Not Found</h1>
-          <Link href="/shop" className="text-glaze hover:text-clay transition">
+          <h1 className="text-2xl font-bold text-[#3A3A3A] mb-4">Product Not Found</h1>
+          <Link href="/shop" className="text-[#3A3A3A] hover:text-[#3A3A3A] transition">
             ← Back to Shop
           </Link>
         </div>
@@ -77,9 +77,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <div className="bg-sand">
+      <div className="bg-white">
         <div className="max-w-6xl mx-auto px-4 py-8">
-          <Link href="/shop" className="text-clay hover:text-glaze transition flex items-center gap-2">
+          <Link href="/shop" className="text-[#3A3A3A] hover:text-[#3A3A3A] transition flex items-center gap-2">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
@@ -92,7 +92,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Image */}
-            <div className="relative h-96 md:h-screen rounded-lg overflow-hidden shadow-lg bg-sand">
+            <div className="relative h-96 md:h-[56vh] overflow-hidden shadow-lg bg-white">
               <Image
                 src={product.image}
                 alt={product.name}
@@ -103,34 +103,34 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
             {/* Product Info */}
             <div className="flex flex-col justify-center">
-              <h1 className="text-4xl md:text-5xl font-serif font-bold text-clay mb-4">
+              <h1 className="text-3xl font-bold text-[#3A3A3A] mb-4">
                 {product.name}
               </h1>
 
-              <p className="text-2xl font-bold text-glaze mb-6">
+              <p className="text-xl font-bold text-glaze mb-6">
                 ${formattedPrice}
               </p>
 
-              <p className="text-lg text-earth mb-8 leading-relaxed">
+              <p className="text-lg text-[#3A3A3A] mb-8 leading-relaxed">
                 {product.description}
               </p>
 
               {/* Specs */}
-              <div className="bg-sand p-6 rounded-lg mb-8">
+              <div className="bg-white p-6 mb-8">
                 {product.dimensions && (
                   <p className="mb-3">
-                    <span className="font-bold text-clay">Dimensions:</span> {product.dimensions}
+                    <span className="font-bold text-[#3A3A3A]">Dimensions:</span> {product.dimensions}
                   </p>
                 )}
                 {product.materials && (
                   <p>
-                    <span className="font-bold text-clay">Materials:</span> {product.materials}
+                    <span className="font-bold text-[#3A3A3A]">Materials:</span> {product.materials}
                   </p>
                 )}
               </div>
 
               {/* Stock Status */}
-              <p className={`text-sm font-semibold mb-6 ${product.quantity > 0 ? 'text-green-600' : 'text-red-600'}`}>
+              <p className={`text-sm font-semibold mb-6 ${product.quantity > 0 ? 'text-[#3A3A3A]' : 'text-[#3A3A3A]'}`}>
                 {product.quantity > 0 
                   ? `${product.quantity} ${product.bundleSize ? `sets of ${product.bundleSize}` : 'in stock'}`
                   : 'Out of stock'
@@ -141,11 +141,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               {product.quantity > 0 && (
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-4">
-                    <label className="font-bold text-clay">Quantity:</label>
-                    <div className="flex items-center border border-clay rounded-lg">
+                    <label className="font-bold text-[#3A3A3A]">Quantity:</label>
+                    <div className="flex items-center border border-clay">
                       <button
                         onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                        className="px-3 py-2 text-clay hover:bg-sand transition"
+                        className="px-3 py-2 text-[#3A3A3A] hover:bg-white transition"
                       >
                         −
                       </button>
@@ -153,27 +153,35 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         {quantity}
                       </span>
                       <button
-                        onClick={() => setQuantity(quantity + 1)}
-                        className="px-3 py-2 text-clay hover:bg-sand transition"
+                        onClick={() => setQuantity(Math.min(product.quantity, quantity + 1))}
+                        disabled={quantity >= product.quantity}
+                        className={`px-3 py-2 transition ${
+                          quantity >= product.quantity
+                            ? 'text-gray-400 cursor-not-allowed'
+                            : 'text-[#3A3A3A] hover:bg-white'
+                        }`}
                       >
                         +
                       </button>
                     </div>
                   </div>
+                  <p className="text-sm text-[#3A3A3A]/70">
+                    Maximum available: {product.quantity} {product.bundleSize ? `sets of ${product.bundleSize}` : 'item'}
+                  </p>
 
                   <button
                     onClick={handleAddToCart}
                     disabled={isLoading}
-                    className={`px-8 py-4 rounded-lg font-bold text-lg transition ${
+                    className={`px-8 py-4 font-bold text-lg transition ${
                       isLoading
                         ? 'bg-gray-400 text-white cursor-not-allowed'
-                        : 'bg-clay text-white hover:bg-earth'
+                        : 'bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:border-glaze hover:text-[#ffffff]'
                     }`}
                   >
                     {isLoading ? 'Processing...' : `Add to Cart - $${totalPrice}`}
                   </button>
 
-                  <p className="text-sm text-earth/60">
+                  <p className="text-sm text-[#3A3A3A]/60">
                     🚚 Free shipping on orders over $100 | Handmade to order, ships within 2 weeks
                   </p>
                 </div>
@@ -182,7 +190,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               {product.quantity === 0 && (
                 <button
                   disabled
-                  className="bg-gray-400 text-white px-8 py-4 rounded-lg font-bold text-lg cursor-not-allowed"
+                  className="bg-gray-400 text-white px-8 py-4 font-bold text-lg cursor-not-allowed"
                 >
                   Out of Stock
                 </button>

@@ -15,12 +15,12 @@ export interface Product {
 
 // Placeholder SVG images - easily replaceable with real Faye pottery photos
 const placeholderImages = {
-  bowl: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="500" height="500"%3E%3Crect fill="%239d7a6e" width="500" height="500"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="32" fill="%23fff"%3ECeramic Bowl%3C/text%3E%3C/svg%3E',
+  bowl: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="500" height="500"%3E%3Crect fill="%23#3A3A3A" width="500" height="500"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="32" fill="%23fff"%3ECeramic Bowl%3C/text%3E%3C/svg%3E',
   mug: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="500" height="500"%3E%3Crect fill="%23b6bfb2" width="500" height="500"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="32" fill="%23fff"%3EClay Mug%3C/text%3E%3C/svg%3E',
   plate: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="500" height="500"%3E%3Crect fill="%23dcc7b8" width="500" height="500"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="32" fill="%23fff"%3EDinner Plates%3C/text%3E%3C/svg%3E',
-  vase: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="500" height="500"%3E%3Crect fill="%239d7a6e" width="500" height="500"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="32" fill="%23fff"%3EVase%3C/text%3E%3C/svg%3E',
+  vase: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="500" height="500"%3E%3Crect fill="%23#3A3A3A" width="500" height="500"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="32" fill="%23fff"%3EVase%3C/text%3E%3C/svg%3E',
   planter: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="500" height="500"%3E%3Crect fill="%23b6bfb2" width="500" height="500"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="32" fill="%23fff"%3EPlanter%3C/text%3E%3C/svg%3E',
-  studio: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="600" height="600"%3E%3Crect fill="%239d7a6e" width="600" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="36" fill="%23fff"%3EPottery Studio%3C/text%3E%3C/svg%3E',
+  studio: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="600" height="600"%3E%3Crect fill="%23#3A3A3A" width="600" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="36" fill="%23fff"%3EPottery Studio%3C/text%3E%3C/svg%3E',
 }
 
 export const products: Product[] = [
@@ -29,36 +29,36 @@ export const products: Product[] = [
     name: 'Rustic Ceramic Bowl - Medium',
     description: 'Hand-thrown stoneware bowl with natural glaze. Perfect for serving or everyday use.',
     price: 4500,
-    image: placeholderImages.bowl,
+    image: '/images/rustic-ceramic-bowl.jpg',
     category: 'bowls',
     featured: true,
     dimensions: '6" diameter x 3" height',
     materials: 'Stoneware, natural glaze',
-    quantity: 3,
+    quantity: 1,
   },
   {
     id: 'mug-01',
     name: 'Warm Clay Mug',
     description: 'Comfortable, handmade mug with warm earthy tones. Holds 12oz. Great for morning coffee or tea.',
     price: 2800,
-    image: placeholderImages.mug,
+    image: '/images/warm-clay-mug.jpg',
     category: 'mugs',
     featured: true,
     dimensions: '3.5" diameter x 4.5" height',
     materials: 'Stoneware, high-fire glaze',
-    quantity: 5,
+    quantity: 4,
   },
   {
     id: 'plate-01',
     name: 'Dinner Plate - Set of 2',
     description: 'Elegant hand-thrown dinner plates. Food-safe and dishwasher friendly.',
     price: 5600,
-    image: placeholderImages.plate,
+    image: '/images/dinner-plate.jpg',
     category: 'plates',
     featured: true,
     dimensions: '10" diameter',
     materials: 'Porcelain, glazed',
-    quantity: 4,
+    quantity: 2,
     bundleSize: 2,
   },
   {
