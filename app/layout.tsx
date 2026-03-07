@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { CartProvider } from '@/lib/cartContext'
 
 export const metadata: Metadata = {
   title: "Faye Nicole Pottery - Handmade Ceramics",
@@ -16,11 +17,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen">
-        <Navigation />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+        <CartProvider>
+          <Navigation />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   )

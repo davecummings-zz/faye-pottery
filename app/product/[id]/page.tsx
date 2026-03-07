@@ -4,10 +4,11 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { getProduct } from '@/lib/products'
 import Link from 'next/link'
-import { loadStripe } from '@stripe/stripe-js'
+import { useCart } from '@/lib/cartContext'
 
 export default function ProductPage({ params }: { params: { id: string } }) {
   const product = getProduct(params.id)
+  const { addToCart } = useCart()
   const [quantity, setQuantity] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
   const [selectedImage, setSelectedImage] = useState(product?.image || '')
@@ -48,52 +49,16 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     setIsHovering(true)
   }
 
-  const handleAddToCart = async () => {
+  const handleAddToCart = () => {
     if (!product) return
-
+    addToCart(product, quantity)
     setIsLoading(true)
-    try {
-      // Call our checkout API endpoint
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          productId: product.id,
-          productName: product.name,
-          price: product.price,
-          quantity: quantity,
-        }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to create checkout session')
-      }
-
-      // Redirect to Stripe Checkout
-      const stripe = await loadStripe(
-        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-      )
-      if (!stripe) {
-        throw new Error('Stripe failed to load')
-      }
-
-      const result = await stripe.redirectToCheckout({
-        sessionId: data.sessionId,
-      })
-
-      if (result.error) {
-        throw new Error(result.error.message)
-      }
-    } catch (error) {
-      console.error('Checkout error:', error)
-      alert(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`)
-    } finally {
+    // Simulate a brief loading state for feedback
+    setTimeout(() => {
       setIsLoading(false)
-    }
+      // Reset quantity after adding
+      setQuantity(1)
+    }, 500)
   }
 
   return (
@@ -236,17 +201,25 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     Maximum available: {product.quantity} {product.bundleSize ? `sets of ${product.bundleSize}` : 'item'}
                   </p>
 
-                  <button
-                    onClick={handleAddToCart}
-                    disabled={isLoading}
-                    className={`px-8 py-4 font-bold text-lg transition ${
-                      isLoading
-                        ? 'bg-gray-400 text-white cursor-not-allowed'
-                        : 'bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:border-glaze hover:text-[#ffffff]'
-                    }`}
-                  >
-                    {isLoading ? 'Processing...' : `Add to Cart - $${totalPrice}`}
-                  </button>
+                  <div className="space-y-3">
+                    <button
+                      onClick={handleAddToCart}
+                      disabled={isLoading}
+                      className={`w-full px-8 py-4 font-bold text-lg transition ${
+                        isLoading
+                          ? 'bg-gray-400 text-white cursor-not-allowed'
+                          : 'bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:border-glaze hover:text-white'
+                      }`}
+                    >
+                      {isLoading ? 'Adding to Cart...' : 'Add to Cart'}
+                    </button>
+                    <Link
+                      href="/cart"
+                      className="block w-full px-8 py-3 text-center bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:text-white font-semibold transition"
+                    >
+                      View Cart
+                    </Link>
+                  </div>
 
                   <p className="text-sm text-[#3A3A3A]/60">
                     🚚 Free shipping on orders over $100 | Handmade to order, ships within 2 weeks
