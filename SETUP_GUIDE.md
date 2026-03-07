@@ -1,4 +1,4 @@
-# Quick Setup Guide for Faye's Pottery Website
+# Quick Setup Guide for Faye Nicole Pottery Website
 
 ## What's Been Built
 

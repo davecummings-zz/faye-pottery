@@ -20,12 +20,6 @@ export default function SuccessContent() {
 
   return (
     <>
-      <div className="bg-green-100 text-green-800 py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold">Order Confirmed! 🎉</h1>
-        </div>
-      </div>
-
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <div className="bg-white shadow-lg p-12 mb-8">
@@ -39,8 +33,8 @@ export default function SuccessContent() {
               Your pottery is on its way! You'll receive an order confirmation email shortly with tracking information.
             </p>
 
-            <p className="text-sm text-[#3A3A3A]/60 mb-8">
-              Order ID: <code className="bg-white p-2">{sessionId}</code>
+            <p className="text-sm text-[#3A3A3A] mb-8">
+              Order ID: <code className="bg-white font-bold m-3">{sessionId}</code>
             </p>
 
             <div className="bg-white p-6 mb-8 text-left">
@@ -54,15 +48,15 @@ export default function SuccessContent() {
             </div>
 
             <p className="text-sm text-[#3A3A3A]/60 mb-8">
-              Questions? Email us at faye@example.com or follow @fayepottery on Instagram
+              Questions? Email us at faye@fayenicolepottery.com or follow @fayenicolepottery on Instagram
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/shop" className="inline-block bg-white text-[#3A3A3A] border border-clay px-8 py-3 font-semibold hover:bg-glaze hover:text-[#3A3A3A] transition">
+            <Link href="/shop" className="inline-block bg-white text-[#3A3A3A] border px-8 py-3 font-semibold hover:bg-glaze hover:text-[#ffffff] transition">
               Continue Shopping
             </Link>
-            <Link href="/" className="inline-block bg-white text-[#3A3A3A] border-2 border-clay px-8 py-3 font-semibold hover:bg-white transition">
+            <Link href="/" className="inline-block bg-white text-[#3A3A3A] border px-8 py-3 font-semibold hover:bg-glaze hover:text-[#ffffff] transition">
               Back to Home
             </Link>
           </div>

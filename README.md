@@ -1,4 +1,4 @@
-# Faye's Pottery Website
+# Faye Nicole Pottery Website
 
 A beautiful, hand-crafted website for a pottery artist. Built with **Next.js**, **Tailwind CSS**, and **Stripe** for payments.
 
@@ -227,4 +227,4 @@ For questions or issues:
 
 ---
 
-**Built with ❤️ for Faye's Pottery**
+**Built with ❤️ for Faye Nicole Pottery**

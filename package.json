@@ -1,7 +1,7 @@
 {
   "name": "faye-pottery",
   "version": "1.0.0",
-  "description": "Faye's Pottery - Handmade ceramic artisan shop",
+  "description": "Faye Nicole Pottery - Handmade ceramic artisan shop",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

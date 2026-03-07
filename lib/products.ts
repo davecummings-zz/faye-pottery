@@ -5,6 +5,7 @@ export interface Product {
   description: string
   price: number
   image: string
+  images?: string[] // Array of additional images for thumbnails
   category: 'bowls' | 'mugs' | 'plates' | 'vases' | 'planters' | 'special'
   featured: boolean
   dimensions?: string
@@ -30,6 +31,7 @@ export const products: Product[] = [
     description: 'Hand-thrown stoneware bowl with natural glaze. Perfect for serving or everyday use.',
     price: 4500,
     image: '/images/rustic-ceramic-bowl.jpg',
+    images: ['/images/rustic-ceramic-bowl.jpg', '/images/hero.jpg', '/images/warm-clay-mug.jpg'],
     category: 'bowls',
     featured: true,
     dimensions: '6" diameter x 3" height',
@@ -41,7 +43,8 @@ export const products: Product[] = [
     name: 'Warm Clay Mug',
     description: 'Comfortable, handmade mug with warm earthy tones. Holds 12oz. Great for morning coffee or tea.',
     price: 2800,
-    image: '/images/warm-clay-mug.jpg',
+    image: '/images/mugs/white/1.jpeg',
+    images: ['/images/mugs/white/2.jpeg', '/images/mugs/white/3.jpeg', '/images/mugs/white/4.jpeg'],
     category: 'mugs',
     featured: true,
     dimensions: '3.5" diameter x 4.5" height',

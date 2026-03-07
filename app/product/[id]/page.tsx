@@ -10,6 +10,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const product = getProduct(params.id)
   const [quantity, setQuantity] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
+  const [selectedImage, setSelectedImage] = useState(product?.image || '')
+  const [zoomLevel, setZoomLevel] = useState(1)
+  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 })
+  const [isHovering, setIsHovering] = useState(false)
 
   if (!product) {
     return (
@@ -26,6 +30,23 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
   const formattedPrice = (product.price / 100).toFixed(2)
   const totalPrice = ((product.price * quantity) / 100).toFixed(2)
+
+  const handleImageHover = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = ((e.clientX - rect.left) / rect.width) * 100
+    const y = ((e.clientY - rect.top) / rect.height) * 100
+    setZoomPosition({ x, y })
+    setZoomLevel(2)
+  }
+
+  const handleImageLeave = () => {
+    setZoomLevel(1)
+    setIsHovering(false)
+  }
+
+  const handleImageEnter = () => {
+    setIsHovering(true)
+  }
 
   const handleAddToCart = async () => {
     if (!product) return
@@ -91,14 +112,60 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       <section className="py-12 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Image */}
-            <div className="relative h-96 md:h-[56vh] overflow-hidden shadow-lg bg-white">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover"
-              />
+            {/* Images */}
+            <div>
+              {/* Main Image with Zoom */}
+              <div 
+                className="relative h-96 md:h-[56vh] overflow-hidden shadow-lg bg-white mb-4 cursor-zoom-in"
+                onMouseMove={handleImageHover}
+                onMouseEnter={handleImageEnter}
+                onMouseLeave={handleImageLeave}
+              >
+                <div
+                  className="w-full h-full transition-transform duration-200"
+                  style={{
+                    transform: `scale(${zoomLevel})`,
+                    transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
+                  }}
+                >
+                  <Image
+                    src={selectedImage}
+                    alt={product.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                
+                {/* Zoom indicator */}
+                {isHovering && (
+                  <div className="absolute top-4 right-4 bg-[#3A3A3A] text-white px-3 py-1 text-sm rounded opacity-75">
+                    🔍 Zoom
+                  </div>
+                )}
+              </div>
+
+              {/* Thumbnail Images */}
+              {product.images && product.images.length > 1 && (
+                <div className="flex gap-3 overflow-x-auto">
+                  {product.images.map((image, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedImage(image)}
+                      className={`flex-shrink-0 w-20 h-20 rounded border-2 transition ${
+                        selectedImage === image
+                          ? 'border-glaze'
+                          : 'border-gray-300 hover:border-gray-400'
+                      }`}
+                    >
+                      <img
+                        src={image}
+                        alt={`${product.name} ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Product Info */}

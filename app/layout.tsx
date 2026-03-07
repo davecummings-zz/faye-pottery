@@ -4,7 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: "Faye's Pottery - Handmade Ceramics",
+  title: "Faye Nicole Pottery - Handmade Ceramics",
   description: 'Handcrafted functional pottery by Faye. Beautiful, unique pieces for everyday life.',
 }
 

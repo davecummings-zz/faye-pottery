@@ -7,7 +7,7 @@ export default function Hero() {
       {/* Background image */}
       <img 
         src="/images/hero.jpg" 
-        alt="Faye's Pottery - Handmade Ceramic Pieces"
+        alt="Faye Nicole Pottery - Handmade Ceramic Pieces"
         className="absolute inset-0 w-full h-full object-cover"
       />
       
@@ -17,7 +17,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-3xl">
         <div className="mb-4 text-sm tracking-widest uppercase text-white/90">Handmade in Texas</div>
-        <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight">
+        <h1 className="text-4xl sm:text-5xl  md:text-7xl font-bold mb-8 text-white leading-tight">
           Pottery Crafted with Care
         </h1>
         <p className="text-lg md:text-2xl mb-10 text-white/95 font-light leading-relaxed max-w-2xl mx-auto">

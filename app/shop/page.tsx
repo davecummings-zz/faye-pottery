@@ -1,11 +1,21 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import ProductCard from '@/components/ProductCard'
 import { products } from '@/lib/products'
 
 export default function Shop() {
+  const searchParams = useSearchParams()
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+
+  // Initialize selectedCategory from URL query params
+  useEffect(() => {
+    const category = searchParams.get('category')
+    if (category) {
+      setSelectedCategory(category)
+    }
+  }, [searchParams])
 
   const filtered = useMemo(() => {
     if (!selectedCategory) return products
