@@ -93,7 +93,7 @@ export default function CartPage() {
               <div className="lg:col-span-2">
                 <div className="space-y-4">
                   {cart.map(item => (
-                    <div key={item.id} className="flex gap-4 border-b pb-4 last:border-b-0">
+                    <div key={item.cartItemId || item.id} className="flex gap-4 border-b pb-4 last:border-b-0">
                       {/* Product Image */}
                       <div className="w-20 h-20 flex-shrink-0 bg-white overflow-hidden border border-gray-300">
                         <Image
@@ -113,7 +113,12 @@ export default function CartPage() {
                         >
                           {item.name}
                         </Link>
-                        <p className="text-glaze font-bold mt-2">
+                        {item.selectedColor && (
+                          <p className="text-sm text-[#3A3A3A]/70">
+                            Color: {item.selectedColor}
+                          </p>
+                        )}
+                        <p className="text-[#3A3A3A] font-bold mt-2">
                           ${(item.price / 100).toFixed(2)} each
                         </p>
 
@@ -122,7 +127,7 @@ export default function CartPage() {
                           <label className="text-sm text-[#3A3A3A]">Qty:</label>
                           <div className="flex items-center border border-clay">
                             <button
-                              onClick={() => updateQuantity(item.id, item.cartQuantity - 1)}
+                              onClick={() => updateQuantity(item.cartItemId || item.id, item.cartQuantity - 1)}
                               className="px-2 py-1 text-[#3A3A3A] hover:bg-white transition"
                             >
                               −
@@ -132,7 +137,7 @@ export default function CartPage() {
                             </span>
                             <button
                               onClick={() =>
-                                updateQuantity(item.id, Math.min(item.quantity, item.cartQuantity + 1))
+                                updateQuantity(item.cartItemId || item.id, Math.min(item.quantity, item.cartQuantity + 1))
                               }
                               disabled={item.cartQuantity >= item.quantity}
                               className={`px-2 py-1 transition ${
@@ -148,7 +153,7 @@ export default function CartPage() {
 
                         {/* Remove Button */}
                         <button
-                          onClick={() => removeFromCart(item.id)}
+                          onClick={() => removeFromCart(item.cartItemId || item.id)}
                           className="mt-4 text-sm text-glaze hover:text-[#3A3A3A] transition font-semibold"
                         >
                           Remove
@@ -192,7 +197,7 @@ export default function CartPage() {
                   className={`w-full px-8 py-4 font-bold text-lg transition ${
                     isLoading
                       ? 'bg-gray-400 text-white cursor-not-allowed'
-                      : 'bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:border-glaze hover:text-white'
+                      : 'bg-white text-[#3A3A3A] border border-gray-300 hover:bg-glaze hover:border-glaze hover:text-white'
                   }`}
                 >
                   {isLoading ? 'Processing...' : 'Proceed to Checkout'}
@@ -200,7 +205,7 @@ export default function CartPage() {
 
                 <Link
                   href="/shop"
-                  className="block w-full mt-3 px-8 py-3 text-center bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:border-glaze hover:text-white font-semibold transition"
+                  className="block w-full mt-3 px-8 py-3 text-center bg-white text-[#3A3A3A] border border-gray-300 hover:bg-glaze hover:border-glaze hover:text-white font-semibold transition"
                 >
                   Continue Shopping
                 </Link>

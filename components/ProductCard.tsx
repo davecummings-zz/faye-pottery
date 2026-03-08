@@ -26,7 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
         
-        <h3 className="text-xl font-bold text-[#3A3A3A] mb-2 group-hover:text-[#3A3A3A] transition">
+        <h3 className="text-xl font-bold text-[#3A3A3A] capitalize mb-2 group-hover:text-[#3A3A3A] transition">
           {product.name}
         </h3>
         
@@ -35,7 +35,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </p>
         
         <div className="flex items-center justify-between">
-          <span className="text-xl font-bold text-glaze">
+          <span className="text-xl font-bold text-[#3A3A3A]">
             ${formattedPrice}
           </span>
           <span className={`text-sm font-semibold ${product.quantity > 0 ? 'text-[#3A3A3A]' : 'text-[#3A3A3A]'}`}>

@@ -5,13 +5,14 @@ import { Product } from './products'
 
 export interface CartItem extends Product {
   cartQuantity: number // quantity user wants to purchase
+  cartItemId?: string // unique id for duplicate products with different colors
 }
 
 interface CartContextType {
   cart: CartItem[]
-  addToCart: (product: Product, quantity: number) => void
-  removeFromCart: (productId: string) => void
-  updateQuantity: (productId: string, quantity: number) => void
+  addToCart: (product: Product, quantity: number, selectedColor?: string) => void
+  removeFromCart: (cartItemId: string) => void
+  updateQuantity: (cartItemId: string, quantity: number) => void
   clearCart: () => void
   getTotalPrice: () => number
   getTotalItems: () => number
@@ -43,35 +44,39 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, [cart, isLoaded])
 
-  const addToCart = (product: Product, quantity: number) => {
+  const addToCart = (product: Product, quantity: number, selectedColor?: string) => {
     setCart(prevCart => {
-      const existingItem = prevCart.find(item => item.id === product.id)
+      // Create unique identifier for items with color variants
+      const cartItemId = selectedColor ? `${product.id}-${selectedColor}` : product.id
+      
+      const existingItem = prevCart.find(item => item.cartItemId === cartItemId)
       if (existingItem) {
-        // Update quantity if product already in cart
+        // Update quantity if product with same color already in cart
         return prevCart.map(item =>
-          item.id === product.id
+          item.cartItemId === cartItemId
             ? { ...item, cartQuantity: item.cartQuantity + quantity }
             : item
         )
       } else {
         // Add new item to cart
-        return [...prevCart, { ...product, cartQuantity: quantity }]
+        const newItem = { ...product, cartQuantity: quantity, cartItemId, selectedColor }
+        return [...prevCart, newItem]
       }
     })
   }
 
-  const removeFromCart = (productId: string) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== productId))
+  const removeFromCart = (cartItemId: string) => {
+    setCart(prevCart => prevCart.filter(item => item.cartItemId === cartItemId || item.id === cartItemId))
   }
 
-  const updateQuantity = (productId: string, quantity: number) => {
+  const updateQuantity = (cartItemId: string, quantity: number) => {
     if (quantity <= 0) {
-      removeFromCart(productId)
+      removeFromCart(cartItemId)
       return
     }
     setCart(prevCart =>
       prevCart.map(item =>
-        item.id === productId ? { ...item, cartQuantity: quantity } : item
+        (item.cartItemId === cartItemId || item.id === cartItemId) ? { ...item, cartQuantity: quantity } : item
       )
     )
   }

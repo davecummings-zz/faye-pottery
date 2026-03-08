@@ -13,7 +13,7 @@ export default function Navigation() {
     <nav className="sticky top-0 z-50 bg-[#f6f6f6] shadow-md">
       <div className="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link href="/" className="text-2xl font-bold text-[#3A3A3A] hover:text-glaze transition" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <Link href="/" className="text-2xl font-bold text-[#3A3A3A] transition" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Faye Nicole Pottery
           </Link>
           <img 
@@ -37,12 +37,12 @@ export default function Navigation() {
           <Link href="/contact" className="text-[#3A3A3A] hover:text-glaze transition">
             Contact
           </Link>
-          <Link href="/cart" className="relative text-[#3A3A3A] hover:text-glaze transition">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 8m10 0l2-8m-12 8h12m-12 0a1 1 0 100 2 1 1 0 000-2m12 0a1 1 0 100 2 1 1 0 000-2" />
+          <Link href="/cart" className="relative text-[#3A3A3A] transition">
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-1-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
             </svg>
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-glaze text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-glaze text-[#3A3A3A] text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
                 {cartCount}
               </span>
             )}

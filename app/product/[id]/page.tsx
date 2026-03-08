@@ -15,6 +15,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const [zoomLevel, setZoomLevel] = useState(1)
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
+  const [selectedColor, setSelectedColor] = useState(product?.selectedColor || '')
 
   if (!product) {
     return (
@@ -51,7 +52,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
   const handleAddToCart = () => {
     if (!product) return
-    addToCart(product, quantity)
+    addToCart(product, quantity, selectedColor || undefined)
     setIsLoading(true)
     // Simulate a brief loading state for feedback
     setTimeout(() => {
@@ -110,8 +111,25 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               </div>
 
               {/* Thumbnail Images */}
-              {product.images && product.images.length > 1 && (
+              {product.images && product.images.length > 0 && (
                 <div className="flex gap-3 overflow-x-auto">
+                  {/* Main image always first */}
+                  <button
+                    onClick={() => setSelectedImage(product.image)}
+                    className={`flex-shrink-0 w-20 h-20 rounded border-2 transition ${
+                      selectedImage === product.image
+                        ? 'border-glaze'
+                        : 'border-gray-300 hover:border-gray-400'
+                    }`}
+                  >
+                    <img
+                      src={product.image}
+                      alt={`${product.name} main`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                  
+                  {/* Additional images */}
                   {product.images.map((image, index) => (
                     <button
                       key={index}
@@ -124,7 +142,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     >
                       <img
                         src={image}
-                        alt={`${product.name} ${index + 1}`}
+                        alt={`${product.name} ${index + 2}`}
                         className="w-full h-full object-cover"
                       />
                     </button>
@@ -135,11 +153,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
             {/* Product Info */}
             <div className="flex flex-col justify-center">
-              <h1 className="text-3xl font-bold text-[#3A3A3A] mb-4">
+              <h1 className="text-3xl font-bold text-[#3A3A3A] capitalize mb-4">
                 {product.name}
               </h1>
 
-              <p className="text-xl font-bold text-glaze mb-6">
+              <p className="text-2xl font-bold mb-6">
                 ${formattedPrice}
               </p>
 
@@ -160,6 +178,32 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   </p>
                 )}
               </div>
+
+              {/* Color Variants */}
+              {product.colorVariants && product.colorVariants.length > 0 && (
+                <div className="mb-8">
+                  <label className="font-bold text-[#3A3A3A] block mb-3">Color:</label>
+                  <div className="flex flex-wrap gap-3">
+                    {product.colorVariants.map(variant => (
+                      <button
+                        key={variant.name}
+                        onClick={() => setSelectedColor(variant.name)}
+                        className={`flex items-center gap-2 px-4 py-2 border rounded-full transition ${
+                          selectedColor === variant.name
+                            ? 'border-[#3A3A3A]'
+                            : 'border-gray-300 hover:border-gray-400'
+                        }`}
+                      >
+                        <div
+                          className="w-6 h-6 border border-gray-400 rounded-full"
+                          style={{ backgroundColor: variant.color }}
+                        />
+                        <span className="text-[#3A3A3A]">{variant.name}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Stock Status */}
               <p className={`text-sm font-semibold mb-6 ${product.quantity > 0 ? 'text-[#3A3A3A]' : 'text-[#3A3A3A]'}`}>
@@ -208,14 +252,14 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                       className={`w-full px-8 py-4 font-bold text-lg transition ${
                         isLoading
                           ? 'bg-gray-400 text-white cursor-not-allowed'
-                          : 'bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:border-glaze hover:text-white'
+                          : 'bg-glaze text-[#fff] border hover:border-glaze  hover:text-[#3a3a3a]'
                       }`}
                     >
                       {isLoading ? 'Adding to Cart...' : 'Add to Cart'}
                     </button>
                     <Link
                       href="/cart"
-                      className="block w-full px-8 py-3 text-center bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:text-white font-semibold transition"
+                      className="block w-full px-8 py-3 text-center bg-white text-[#3A3A3A] border hover:bg-glaze hover:text-white font-semibold transition"
                     >
                       View Cart
                     </Link>
