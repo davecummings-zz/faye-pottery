@@ -23,9 +23,6 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png" />
         <link rel="apple-touch-icon" href="/images/favicon_io/apple-touch-icon.png" />
         <link rel="manifest" href="/images/favicon_io/site.webmanifest" />
-        
-        {/* React DevTools */}
-        <script src="http://localhost:8097"></script>
       </head>
       <body className="flex flex-col min-h-screen">
         <CartProvider>

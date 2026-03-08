@@ -197,7 +197,7 @@ export default function CartPage() {
                   className={`w-full px-8 py-4 font-bold text-lg transition ${
                     isLoading
                       ? 'bg-gray-400 text-white cursor-not-allowed'
-                      : 'bg-white text-[#3A3A3A] border border-gray-300 hover:bg-glaze hover:border-glaze hover:text-white'
+                      : 'bg-glaze text-[#ffffff] border border-gray-300 hover:bg-glaze hover:border-glaze hover:text-[#3A3A3A]'
                   }`}
                 >
                   {isLoading ? 'Processing...' : 'Proceed to Checkout'}
