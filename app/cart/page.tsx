@@ -183,7 +183,7 @@ export default function CartPage() {
 
                 <div className="flex justify-between mb-6">
                   <span className="text-lg font-bold text-[#3A3A3A]">Total</span>
-                  <span className="text-lg font-bold text-glaze">${formattedTotal}</span>
+                  <span className="text-lg font-bold text-[#3A3A3A]">${formattedTotal}</span>
                 </div>
 
                 <button
@@ -192,7 +192,7 @@ export default function CartPage() {
                   className={`w-full px-8 py-4 font-bold text-lg transition ${
                     isLoading
                       ? 'bg-gray-400 text-white cursor-not-allowed'
-                      : 'bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:text-white'
+                      : 'bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:border-glaze hover:text-white'
                   }`}
                 >
                   {isLoading ? 'Processing...' : 'Proceed to Checkout'}
@@ -200,7 +200,7 @@ export default function CartPage() {
 
                 <Link
                   href="/shop"
-                  className="block w-full mt-3 px-8 py-3 text-center bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:text-white font-semibold transition"
+                  className="block w-full mt-3 px-8 py-3 text-center bg-white text-[#3A3A3A] border border-clay hover:bg-glaze hover:border-glaze hover:text-white font-semibold transition"
                 >
                   Continue Shopping
                 </Link>

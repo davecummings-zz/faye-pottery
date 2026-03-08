@@ -21,11 +21,29 @@ export default function Contact() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // TODO: Integrate with email service
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setFormData({ name: '', email: '', subject: '', message: '' })
-    setTimeout(() => setSubmitted(false), 3000)
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message')
+      }
+
+      setSubmitted(true)
+      setFormData({ name: '', email: '', subject: '', message: '' })
+      setTimeout(() => setSubmitted(false), 3000)
+    } catch (error) {
+      console.error('Contact form error:', error)
+      alert(`Error: ${error instanceof Error ? error.message : 'Failed to send message'}`)
+    }
   }
 
   return (
@@ -39,7 +57,7 @@ export default function Contact() {
 
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-3xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="bg-white p-6 text-center shadow-sm">
               <div className="text-3xl mb-4">📧</div>
               <h3 className="font-bold text-2xl text-[#3A3A3A] mb-2">Email</h3>
@@ -64,7 +82,7 @@ export default function Contact() {
                 @fayepottery on Instagram
               </a>
             </div>
-          </div>
+          </div> */}
 
           <div className="p-8">
             <h2 className="text-2xl font-bold text-[#3A3A3A] mb-8">Send a Message</h2>
