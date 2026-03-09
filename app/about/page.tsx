@@ -6,7 +6,7 @@ export default function About() {
     <>
       <div className="bg-white text-[#3A3A3A] py-12 border-b">
         <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-3xl font-bold">About Faye</h1>
+          <h1 className="text-2xl font-bold">About Faye</h1>
         </div>
       </div>
 
@@ -37,7 +37,7 @@ export default function About() {
           </div>
 
           {/* Values */}
-          <div className="bg-white p-12 mb-16">
+          {/* <div className="bg-white p-12 mb-16">
             <h3 className="text-2xl font-bold text-[#3A3A3A] mb-8 text-center">My Values</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
@@ -62,7 +62,7 @@ export default function About() {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* CTA */}
           <div className="text-center">

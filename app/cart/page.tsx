@@ -70,7 +70,7 @@ export default function CartPage() {
     <>
       <div className="bg-white text-[#3A3A3A] py-12 border-b">
         <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-3xl font-bold">Shopping Cart</h1>
+          <h1 className="text-2xl font-bold">Shopping Cart</h1>
           <p className="text-lg mt-2 text-[rgba(58,58,58,0.9)]">Review your items and checkout</p>
         </div>
       </div>

@@ -6,7 +6,7 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl font-bold text-[#3A3A3A] mb-8">About Faye</h2>
+            <h2 className="text-2xl font-bold text-[#3A3A3A] mb-8">About Faye</h2>
             <p className="text-lg text-[#3A3A3A] mb-6 leading-relaxed font-light">
               I'm a ceramic artist dedicated to creating beautiful, functional pottery that brings joy to everyday moments. Each piece is hand-thrown and hand-finished with intention and care.
             </p>

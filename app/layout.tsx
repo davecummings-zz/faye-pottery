@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Navigation from '@/components/Navigation'
+import AnnouncementBar from '@/components/AnnouncementBar'
 import Footer from '@/components/Footer'
 import { CartProvider } from '@/lib/cartContext'
 
@@ -26,6 +27,7 @@ export default function RootLayout({
       </head>
       <body className="flex flex-col min-h-screen">
         <CartProvider>
+          <AnnouncementBar />
           <Navigation />
           <main className="flex-grow">
             {children}

@@ -3,14 +3,20 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { useCart } from '@/lib/cartContext'
+import { ANNOUNCEMENT } from '@/lib/announcement'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const { getTotalItems } = useCart()
   const cartCount = getTotalItems()
 
+  // If announcement bar is enabled, don't make nav sticky
+  const navClass = ANNOUNCEMENT.ENABLED 
+    ? "relative top-0 z-50 bg-[#f6f6f6] shadow-md"
+    : "sticky top-0 z-50 bg-[#f6f6f6] shadow-md"
+
   return (
-    <nav className="sticky top-0 z-50 bg-[#f6f6f6] shadow-md">
+    <nav className={navClass}>
       <div className="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" className="text-2xl font-bold text-[#3A3A3A] transition" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>

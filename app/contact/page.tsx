@@ -50,7 +50,7 @@ export default function Contact() {
     <>
       <div className="bg-white text-[#3A3A3A] py-12 border-b">
         <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-3xl font-bold">Get in Touch</h1>
+          <h1 className="text-2xl font-bold">Get in Touch</h1>
           <p className="text-lg mt-2 text-[rgba(58,58,58,0.9)]">Have a question? I'd love to hear from you.</p>
         </div>
       </div>
@@ -142,7 +142,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full bg-white text-[#3A3A3A] border py-3 font-bold hover:bg-glaze hover:text-[#ffffff] transition"
+                className="w-full bg-glaze text-[#ffffff] border py-3 font-bold hover:text-[#3A3A3A] transition"
               >
                 Send Message
               </button>
