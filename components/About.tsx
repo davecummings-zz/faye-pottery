@@ -14,7 +14,7 @@ export default function About() {
               My work celebrates the natural beauty of clay—the organic forms, warm glazes, and tactile surfaces that make handmade ceramics special. Whether it's a morning coffee mug or a statement vase, I create pieces meant to be used and loved.
             </p>
             <p className="text-lg text-[#3A3A3A] leading-relaxed font-light">
-              Based in [Your Location], I work from my studio creating unique pottery while also teaching others the meditative art of ceramic work.
+              Based in Austin TX, I work from my studio creating unique pottery while also teaching others the meditative art of ceramic work.
             </p>
           </div>
           

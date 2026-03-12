@@ -67,7 +67,7 @@ export default function About() {
           {/* CTA */}
           <div className="text-center">
             <h3 className="text-3xl font-bold text-[#3A3A3A] mb-6">Ready to Find Your Favorite Piece?</h3>
-            <Link href="/shop" className="inline-block bg-white text-[#3A3A3A] border px-8 py-3 font-semibold hover:bg-glaze hover:text-[#ffffff] transition">
+            <Link href="/shop" className="inline-block bg-glaze text-[#fff] border px-8 py-3 font-semibold hover:text-[#3A3A3A] transition">
               Explore the Shop
             </Link>
           </div>

@@ -20,7 +20,7 @@ export default function FeaturedProducts() {
         </div>
 
         <div className="text-center">
-          <Link href="/shop" className="inline-block bg-white text-[#3A3A3A] border px-8 py-3 font-semibold hover:bg-glaze hover:text-[#ffffff] transition">
+          <Link href="/shop" className="inline-block bg-glaze text-[#ffffff] border px-8 py-3 font-semibold hover:text-[#3A3A3A] transition">
             View All Products
           </Link>
         </div>

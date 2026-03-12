@@ -66,7 +66,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }
 
   const removeFromCart = (cartItemId: string) => {
-    setCart(prevCart => prevCart.filter(item => item.cartItemId === cartItemId || item.id === cartItemId))
+    setCart(prevCart => prevCart.filter(item => item.cartItemId !== cartItemId))
   }
 
   const updateQuantity = (cartItemId: string, quantity: number) => {
@@ -76,7 +76,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
     setCart(prevCart =>
       prevCart.map(item =>
-        (item.cartItemId === cartItemId || item.id === cartItemId) ? { ...item, cartQuantity: quantity } : item
+        item.cartItemId === cartItemId ? { ...item, cartQuantity: quantity } : item
       )
     )
   }
